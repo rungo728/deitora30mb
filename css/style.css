@@ -1,0 +1,325 @@
+@charset "UTF-8";
+/*======================================================================
+# width
+=======================================================================*/
+/*======================================================================
+# mixins
+=======================================================================*/
+/*=================================================================================
+# colors
+=================================================================================*/
+/*=================================================================================
+# font-family
+=================================================================================*/
+/*======================================================================
+# common 全体共通するスタイル
+=======================================================================*/
+@media screen and (max-width: 767px) {
+  .is-pc {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .is-sp {
+    display: none;
+  }
+}
+
+body {
+  font-size: 16px;
+  color: #333;
+  font-family: "ヒラギノ角ゴシック", "Hiragino Sans", "メイリオ", Meiryo, sans-serif;
+  line-height: 1.6875;
+}
+
+img {
+  width: 100%;
+}
+
+.bg-img {
+  background-image: url(../img/bg-image.png);
+  background-repeat: repeat;
+}
+
+.inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 15px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.section {
+  margin-top: 60px;
+}
+
+.util-title {
+  font-size: 43px;
+  font-family: futura;
+  color: #301F1B;
+  text-align: center;
+  line-height: 1;
+}
+
+.util-link {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-block;
+  color: #fff;
+  background-color: #c63205;
+  padding: 20px 30px;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+.util-link:hover {
+  background-color: #161616;
+  -webkit-transition: .3s;
+  transition: .3s;
+  opacity: .8;
+}
+
+/*=================================================================================
+# header
+=================================================================================*/
+/* header-nav
+-------------------------------------------------------------------------*/
+.header-nav .header-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.header-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 0;
+}
+
+.header-item {
+  display: inline-block;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .header-item + .header-item {
+    margin-left: 30px;
+  }
+  .header-item:first-child {
+    margin-left: auto;
+  }
+  .header-item:last-child {
+    margin-right: auto;
+  }
+}
+
+.header-item-link {
+  display: block;
+  font-weight: 600;
+  color: #421f15;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+}
+
+@media screen and (min-width: 768px) {
+  .header-item-link::after {
+    display: block;
+    font-size: 22px;
+  }
+}
+
+.header-item-link:hover {
+  opacity: .8;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-top a::after {
+    content: 'TOP';
+  }
+  .nav-news a::after {
+    content: 'NEWS';
+  }
+  .nav-story a::after {
+    content: 'STORY';
+  }
+  .nav-comments a::after {
+    content: 'COMMENTS';
+  }
+  .nav-cast a::after {
+    content: 'CAST';
+  }
+  .nav-inquiry a::after {
+    content: 'INQUIRY';
+  }
+}
+
+/* hero
+-------------------------------------------------------------------------*/
+.heroarea-img {
+  background: url(../img/heroarea-image2.png) center center/cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.heroarea-img::after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.16);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.heroarea {
+  padding: 60px 0;
+}
+
+.heroarea-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+@media screen and (min-width: 768px) {
+  .heroarea-heading {
+    padding: 15px 0;
+  }
+}
+
+.heroarea-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .heroarea-row {
+    margin-top: 88px;
+  }
+}
+
+.heroarea-row-contents {
+  margin: 0 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .heroarea-row-contents {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 34%;
+            flex: 0 1 34%;
+  }
+}
+
+.heroarea-row-text {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 42%;
+          flex: 0 0 42%;
+  font-size: 14px;
+  color: #fff;
+  margin-left: auto;
+  text-align: justify;
+}
+
+@media screen and (min-width: 768px) {
+  .heroarea-row-text {
+    padding: 0 15px;
+  }
+}
+
+/* header-bottom
+-------------------------------------------------------------------------*/
+.reserve-button {
+  text-align: right;
+}
+
+.reserve-button .util-link {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+/*=======================================================================
+# main
+====================================================================== */
+/*=======================================================================
+# introduction
+====================================================================== */
+.introduction {
+  margin-top: 35px;
+}
+
+.intro-container {
+  padding: 30px;
+  position: relative;
+}
+
+.bl_introImg {
+  width: 230px;
+  -webkit-clip-path: polygon(20% 40%, 20% 100%, 100% 40%);
+          clip-path: polygon(20% 40%, 20% 100%, 100% 40%);
+  position: absolute;
+  top: -117px;
+  left: -45px;
+}
+
+.intro-bg {
+  background-color: rgba(255, 255, 255, 0.29);
+}
+
+.intro-title {
+  margin-bottom: 15px;
+}
+
+.intro-title2 {
+  font-size: 34px;
+  font-weight: 600;
+  color: #301F1B;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.intro-text-wrap {
+  -webkit-columns: 2;
+          columns: 2;
+  -webkit-column-gap: 30px;
+          column-gap: 30px;
+}
+
+.intro-text {
+  text-align: justify;
+}
+
+/*=======================================================================
+# youtube
+====================================================================== */
+.youtube-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  /* = height ÷ width × 100 */
+}
+
+.youtube-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

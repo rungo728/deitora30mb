@@ -1,0 +1,320 @@
+@charset "utf-8";
+/*======================================================================
+# width
+=======================================================================*/
+$layout-width-canvas: 1366px;
+$layout-width-inner: 1200px;
+/*======================================================================
+# mixins
+=======================================================================*/
+//マップ型変数breakpointsを定義
+$breakpoints: (
+//キー  値
+ 'small-sp':'screen and (max-width: 360px)', //360px以下（スモールスマホ）用の表示  
+ 'sp':'screen and (max-width: 500px)', //500px以下（スマホ）用の表示
+ 'sp-down': 'screen and (max-width: 767px)', //767px以下（スマホ）用の表示
+ 'sp-up': 'screen and (min-width: 768px)', //768px以上（タブレット・PC）用の表示
+ 'tab-down': "(max-width: #{$layout-width-inner - 1px})",
+ 'tab-up': "(min-width: #{$layout-width-inner})",
+ 'pc': "(min-width: #{$layout-width-canvas})",
+) !default;
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: md) {
+//map-get(マップ型変数, キー)で値を取得
+  @media #{map-get($breakpoints, $breakpoint)} {
+    //この中をカスタムできる
+    @content;
+  }
+}
+/*=================================================================================
+# colors
+=================================================================================*/
+$font-color-grey:#333;
+$font-color-white:#fff;
+$font-color-brown1:#421f15;
+$font-color-brown2:#301F1B;
+$primary-color:#c63205;
+
+/*=================================================================================
+# font-family
+=================================================================================*/
+$font-family-en: futura-pt-condensed, sans-serif;
+$font-family-default: 'ヒラギノ角ゴシック','Hiragino Sans','メイリオ', Meiryo,sans-serif;
+
+/*======================================================================
+# common 全体共通するスタイル
+=======================================================================*/
+@include mq('sp-down'){
+  .is-pc{
+    display: none;
+  }
+}
+
+@include mq('sp-up'){
+  .is-sp{
+    display: none;
+  }
+}
+
+body{
+ font-size: 16px;
+ color: $font-color-grey;
+ font-family:$font-family-default;
+ line-height: 1.6875;
+}
+// 外枠に対して100%で画像を広げたいので
+img{
+  width: 100%;
+
+}
+.bg-img {
+  background-image: url(../img/bg-image.png);
+  background-repeat: repeat;
+}
+.inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: content-box;
+}
+.section {
+  margin-top: 60px;
+}
+.util-title {
+  font-size: 43px;
+  font-family: futura;
+  color: $font-color-brown2;
+  text-align: center;
+  line-height: 1;
+}
+.util-link {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-block;
+  color: $font-color-white;
+  background-color: $primary-color;
+  padding: 20px 30px;
+  transition: background-color .3s;
+
+  &:hover {
+    background-color: #161616;
+    transition : .3s; 
+    opacity: .8;
+  }
+}
+/*=================================================================================
+# header
+=================================================================================*/
+/* header-nav
+-------------------------------------------------------------------------*/
+.header-nav {
+
+  .header-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+.header-list {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+
+}
+.header-item {
+  display: inline-block;
+  text-align: center;
+  
+  @include mq('sp-up'){
+    & + &{
+      margin-left: 30px;
+    }
+    &:first-child {
+      margin-left: auto;
+    }
+  
+    &:last-child {
+      margin-right: auto;
+    }
+  }
+}
+.header-item-link {
+  display: block;
+  font-weight: 600;
+  color: $font-color-brown1;
+  transition: color .3s;
+
+  // すべてのナビメニューに適用する
+  @include mq('sp-up'){
+    &::after {
+      display: block;
+      font-size: 22px;
+    }  
+  }
+  &:hover {
+    opacity: .8;
+  }
+}
+@include mq('sp-up'){
+
+  .nav-top {
+    a::after {
+      content: 'TOP';  
+    }
+  }
+  .nav-news {
+    a::after {
+      content: 'NEWS';
+    }
+  }
+  
+  .nav-story {
+    a::after {
+      content: 'STORY';
+    }
+  }
+  
+  .nav-comments  {
+    a::after {
+      content: 'COMMENTS';
+    }
+  }
+  
+  .nav-cast {
+    a::after {
+      content: 'CAST';
+    }
+  }
+  .nav-inquiry  {
+    a::after {
+      content: 'INQUIRY';
+    }
+  }
+}
+/* hero
+-------------------------------------------------------------------------*/
+.heroarea-img {
+  background: url(../img/heroarea-image2.png) center center / cover;
+  background-repeat: no-repeat;
+  position: relative;
+  
+  &::after{
+    content: "";
+    background-color: rgba(0, 0, 0, 0.16);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+ 
+}
+.heroarea {
+  padding: 60px 0;
+}
+.heroarea-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+.heroarea-heading{
+
+  @include mq('sp-up'){
+    padding: 15px 0; 
+  }
+}
+.heroarea-row {
+  display: flex;
+  align-items: center;
+
+  @include mq('sp-up'){
+    margin-top: 88px;
+  } 
+}
+.heroarea-row-contents {
+  margin: 0 15px;
+
+  @include mq('sp-up'){
+    flex: 0 1 34%;
+  }
+}
+.heroarea-row-text {
+  flex: 0 0 42%;
+  font-size: 14px;
+  color: $font-color-white;
+  margin-left: auto;
+  text-align: justify;
+  @include mq('sp-up'){
+    padding: 0 15px;
+  }
+}
+/* header-bottom
+-------------------------------------------------------------------------*/
+.reserve-button {
+  text-align: right;
+
+  .util-link {
+    transform: translateY(-50%);
+  }
+}
+/*=======================================================================
+# main
+====================================================================== */
+/*=======================================================================
+# introduction
+====================================================================== */
+.introduction{
+  margin-top: 35px;
+}
+.intro-container{
+  padding: 30px;
+  position: relative;
+}
+.bl_introImg {
+  width: 230px;
+  clip-path: polygon(20% 40%, 20% 100%, 100% 40%);
+  position: absolute;
+  top: -117px;
+  left: -45px;
+}
+.intro-bg {
+  background-color:rgba(255, 255, 255, .29);
+}
+.intro-title {
+  margin-bottom: 15px;
+}
+.intro-title2 {
+  font-size: 34px;
+  font-weight: 600;
+  color: $font-color-brown2;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.intro-text-wrap{
+  // ２列に
+  columns: 2;
+  column-gap: 30px;
+}
+.intro-text {
+  text-align: justify;
+}
+/*=======================================================================
+# youtube
+====================================================================== */
+.youtube-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* = height ÷ width × 100 */
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
